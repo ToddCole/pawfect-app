@@ -4,7 +4,7 @@ import { supabaseServer } from "@/lib/supabase-server";
 
 export async function GET() {
   try {
-    const supabase = supabaseServer();
+    const supabase = await supabaseServer();
     const { count, error } = await supabase
       .from("breeds")
       .select("*", { count: "exact", head: true });

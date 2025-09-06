@@ -7,7 +7,7 @@ export default async function TestSupabasePage() {
   let breedCount = 0;
 
   try {
-    const supabase = supabaseServer();
+    const supabase = await supabaseServer();
     const { count, error } = await supabase
       .from("breeds")
       .select("*", { count: "exact", head: true });

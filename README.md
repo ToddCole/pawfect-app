@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PAWfect App
+
+A Next.js dog breed explorer application with Supabase backend integration.
+
+## Features
+
+- **Dog Breed Browser**: View all dog breeds with detailed information
+- **Random Breed Discovery**: Get redirected to a random breed for exploration
+- **Supabase Integration**: Backend powered by Supabase for breed data storage
+- **Responsive Design**: Built with Tailwind CSS for mobile-friendly experience
+- **API Endpoints**: RESTful API for breed data access
+
+## Pages
+
+- `/` - Home page
+- `/breeds` - Browse all dog breeds
+- `/breeds/[id]` - Individual breed detail pages with descriptions and image placeholders
+- `/breeds/sample` - Redirects to a random breed (perfect for discovery)
+- `/auth` - Authentication page
+- `/test-supabase` - Supabase connection testing and diagnostics
+
+## API Endpoints
+
+- `/api/ping` - Health check endpoint with breed count
+- `/api/first-breed` - Returns the first breed in the database
+- `/api/test-breed/[id]` - Dynamic breed API endpoint
+
+## Tech Stack
+
+- **Framework**: Next.js 15.5.2 with App Router
+- **Database**: Supabase with PostgreSQL
+- **Styling**: Tailwind CSS 4.0
+- **TypeScript**: Full TypeScript support
+- **Authentication**: Supabase Auth integration
 
 ## Getting Started
 
-First, run the development server:
-
+1. **Install dependencies**:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Environment Setup**:
+Create a `.env.local` file with your Supabase credentials:
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Run the development server**:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. **Open your browser**:
+Visit [http://localhost:3000](http://localhost:3000) to see the application.
 
-## Learn More
+## Database Schema
 
-To learn more about Next.js, take a look at the following resources:
+The application expects a `breeds` table in Supabase with the following structure:
+- `id` - Primary key
+- `name` - Breed name
+- Additional fields for breed information (description, characteristics, etc.)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Navigation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The application includes a footer navigation with:
+- **Main Navigation**: Home, All Breeds, Random Breed, Auth
+- **Testing Links**: Supabase Test, API endpoints
+- **Branding**: PAWfect App logo and description
 
-## Deploy on Vercel
+## Development Notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Uses `@supabase/ssr` for server-side rendering with Supabase
+- Implements proper error handling and loading states
+- Random breed selection uses client-side randomization for better UX
+- Footer navigation provides easy access to all features during development
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint

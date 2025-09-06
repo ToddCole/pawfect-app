@@ -2,7 +2,7 @@ import Link from "next/link";
 import { supabaseServer } from "@/lib/supabase-server";
 
 export default async function BreedsPage() {
-  const sb = supabaseServer();
+  const sb = await supabaseServer();
   const { data: breeds, error } = await sb
     .from("breeds")
     .select("id,name,size,image_url")
