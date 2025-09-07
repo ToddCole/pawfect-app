@@ -111,32 +111,44 @@ export default function Questionnaire({ onComplete }: QuestionnaireProps) {
   const currentQ = questions[currentQuestion];
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <div className="mb-4">
-        <div className="flex justify-between text-sm text-gray-500 mb-2">
+    <div className="max-w-md mx-auto p-6 card bg-white shadow-xl">
+      <div className="mb-6">
+        <div className="flex justify-between text-sm text-neutral-500 mb-3">
           <span>Question {currentQuestion + 1} of {questions.length}</span>
+          <span>{Math.round(((currentQuestion + 1) / questions.length) * 100)}%</span>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-2">
+        <div className="w-full bg-neutral-200 rounded-full h-3">
           <div 
-            className="bg-orange-500 h-2 rounded-full transition-all duration-300"
+            className="bg-gradient-to-r from-blue-500 to-green-500 h-3 rounded-full transition-all duration-500 ease-out"
             style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
           />
         </div>
       </div>
 
-      <h2 className="text-xl font-bold mb-6">{currentQ.question}</h2>
+      <h2 className="text-2xl font-bold mb-8 text-neutral-900">{currentQ.question}</h2>
       
       <div className="space-y-3">
         {currentQ.options.map((option) => (
           <button
             key={option.value}
             onClick={() => handleAnswer(currentQ.id, option.value)}
-            className="w-full p-4 text-left border border-gray-300 rounded-lg hover:bg-orange-50 hover:border-orange-500 transition-all duration-200"
+            className="w-full p-4 text-left border-2 border-neutral-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 group"
           >
-            {option.label}
+            <span className="group-hover:text-blue-700 transition-colors">{option.label}</span>
           </button>
         ))}
       </div>
+      
+      {currentQuestion > 0 && (
+        <div className="mt-6 text-center">
+          <button
+            onClick={() => setCurrentQuestion(currentQuestion - 1)}
+            className="text-neutral-500 hover:text-blue-600 transition-colors"
+          >
+            ← Back to previous question
+          </button>
+        </div>
+      )}
     </div>
   );
 }

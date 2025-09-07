@@ -22,7 +22,7 @@ export default function Home() {
 
   if (showQuestionnaire) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white">
+      <div className="min-h-screen gradient-bg">
         <Navigation showQuizButton={false} />
         <main className="py-12">
           <Questionnaire onComplete={handleQuestionnaireComplete} />
@@ -38,42 +38,42 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white">
+    <div className="min-h-screen gradient-bg">
       <Navigation onTakeQuiz={() => setShowQuestionnaire(true)} />
 
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-neutral-900 mb-6 leading-tight">
             Find Your
-            <span className="text-orange-500 block">Perfect Furry Friend</span>
+            <span className="text-gradient block">Perfect Furry Friend</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-neutral-600 mb-8 max-w-3xl mx-auto leading-relaxed">
             Discover dog breeds that match your lifestyle, living situation, and preferences with our intelligent recommendation engine.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
               onClick={() => setShowQuestionnaire(true)}
-              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg"
+              className="btn-primary px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
             >
               🎯 Take the Quiz Now
             </button>
             <Link 
               href="/breeds"
-              className="border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all"
+              className="btn-secondary px-8 py-4 text-lg font-semibold"
             >
               Browse All Breeds
             </Link>
           </div>
         </div>
         
-        {/* Hero Image Placeholder */}
+        {/* Hero Image Placeholder - Modern Design */}
         <div className="max-w-4xl mx-auto mt-16">
-          <div className="bg-gradient-to-r from-orange-200 to-orange-300 rounded-3xl h-96 flex items-center justify-center shadow-2xl">
+          <div className="card p-8 bg-gradient-to-br from-blue-100 via-green-50 to-blue-50 h-96 flex items-center justify-center shadow-2xl">
             <div className="text-center">
-              <div className="text-8xl mb-4">🐕‍🦺</div>
-              <p className="text-orange-800 text-xl font-semibold">Hero Image Placeholder</p>
-              <p className="text-orange-700">Perfect spot for a beautiful dog photo</p>
+              <div className="text-8xl mb-4 animate-bounce">🐕‍🦺</div>
+              <p className="text-blue-800 text-xl font-semibold">Hero Image Placeholder</p>
+              <p className="text-blue-700">Perfect spot for a beautiful dog photo</p>
             </div>
           </div>
         </div>
@@ -83,41 +83,41 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
               Why Choose Pawfect Match?
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
               Our intelligent system considers your lifestyle to find breeds that will thrive in your home.
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="card text-center p-8 hover:shadow-xl transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-3xl">🧠</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Smart Matching</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-neutral-900 mb-3">Smart Matching</h3>
+              <p className="text-neutral-600 leading-relaxed">
                 Our AI considers 20+ factors including living space, activity level, and experience to find your perfect match.
               </p>
             </div>
             
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="card text-center p-8 hover:shadow-xl transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-3xl">📊</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Comprehensive Database</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-neutral-900 mb-3">Comprehensive Database</h3>
+              <p className="text-neutral-600 leading-relaxed">
                 Access detailed information on 279+ dog breeds with characteristics, care requirements, and personality traits.
               </p>
             </div>
             
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="card text-center p-8 hover:shadow-xl transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-3xl">💝</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Personalized Results</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-neutral-900 mb-3">Personalized Results</h3>
+              <p className="text-neutral-600 leading-relaxed">
                 Get match percentages and specific reasons why each breed fits your lifestyle and preferences.
               </p>
             </div>
@@ -126,47 +126,47 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-20 bg-gradient-to-b from-orange-50 to-orange-100">
+      <section className="py-20 gradient-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
               How It Works
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-neutral-600">
               Finding your perfect dog breed is just three simple steps away.
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-lg p-8 text-center relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold">
+            <div className="card p-8 text-center relative hover:shadow-xl transition-all duration-300">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full flex items-center justify-center font-bold shadow-lg">
                 1
               </div>
-              <div className="text-4xl mb-4">📝</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Take the Quiz</h3>
-              <p className="text-gray-600">
+              <div className="text-5xl mb-6 mt-4">📝</div>
+              <h3 className="text-xl font-semibold text-neutral-900 mb-3">Take the Quiz</h3>
+              <p className="text-neutral-600 leading-relaxed">
                 Answer 7 quick questions about your lifestyle, living situation, and preferences.
               </p>
             </div>
             
-            <div className="bg-white rounded-lg shadow-lg p-8 text-center relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold">
+            <div className="card p-8 text-center relative hover:shadow-xl transition-all duration-300">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full flex items-center justify-center font-bold shadow-lg">
                 2
               </div>
-              <div className="text-4xl mb-4">🔍</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Get Matches</h3>
-              <p className="text-gray-600">
+              <div className="text-5xl mb-6 mt-4">🔍</div>
+              <h3 className="text-xl font-semibold text-neutral-900 mb-3">Get Matches</h3>
+              <p className="text-neutral-600 leading-relaxed">
                 Our algorithm analyzes your answers and finds breeds that match your criteria.
               </p>
             </div>
             
-            <div className="bg-white rounded-lg shadow-lg p-8 text-center relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold">
+            <div className="card p-8 text-center relative hover:shadow-xl transition-all duration-300">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-full flex items-center justify-center font-bold shadow-lg">
                 3
               </div>
-              <div className="text-4xl mb-4">❤️</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Find Your Friend</h3>
-              <p className="text-gray-600">
+              <div className="text-5xl mb-6 mt-4">❤️</div>
+              <h3 className="text-xl font-semibold text-neutral-900 mb-3">Find Your Friend</h3>
+              <p className="text-neutral-600 leading-relaxed">
                 Explore detailed breed information and find your perfect canine companion.
               </p>
             </div>
@@ -178,10 +178,10 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
               Popular Dog Breeds
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-neutral-600">
               Explore some of the most beloved breeds in our database.
             </p>
           </div>
@@ -193,10 +193,10 @@ export default function Home() {
               { name: 'Labrador', emoji: '🐕‍🦺', traits: 'Outgoing, Active, Loyal' },
               { name: 'German Shepherd', emoji: '🐺', traits: 'Confident, Courageous, Smart' }
             ].map((breed) => (
-              <div key={breed.name} className="bg-gray-50 rounded-lg p-6 text-center hover:shadow-lg transition-all cursor-pointer">
-                <div className="text-5xl mb-4">{breed.emoji}</div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{breed.name}</h3>
-                <p className="text-sm text-gray-600">{breed.traits}</p>
+              <div key={breed.name} className="card p-6 text-center hover:shadow-xl transition-all duration-300 cursor-pointer group">
+                <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300">{breed.emoji}</div>
+                <h3 className="text-lg font-semibold text-neutral-900 mb-2">{breed.name}</h3>
+                <p className="text-sm text-neutral-600">{breed.traits}</p>
               </div>
             ))}
           </div>
@@ -204,7 +204,7 @@ export default function Home() {
           <div className="text-center">
             <Link 
               href="/breeds"
-              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+              className="btn-primary px-8 py-3 font-semibold"
             >
               View All 279 Breeds
             </Link>
@@ -213,17 +213,18 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 to-orange-600">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gradient-to-br from-blue-500 via-blue-600 to-green-600 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Ready to Find Your Perfect Match?
           </h2>
-          <p className="text-xl text-orange-100 mb-8">
+          <p className="text-xl text-blue-100 mb-8">
             Take our quick quiz and discover breeds that will love your lifestyle as much as you'll love them.
           </p>
           <button 
             onClick={() => setShowQuestionnaire(true)}
-            className="bg-white text-orange-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-50 transition-all transform hover:scale-105 shadow-lg"
+            className="bg-white text-blue-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-50 transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl"
           >
             🎯 Start Your Journey
           </button>
@@ -231,15 +232,17 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-neutral-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
-                <span className="text-2xl">🐾</span>
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-green-500 rounded-xl flex items-center justify-center">
+                  <span className="text-xl">🐾</span>
+                </div>
                 <span className="text-xl font-bold">Pawfect Match</span>
               </div>
-              <p className="text-gray-300 mb-4">
+              <p className="text-neutral-300 mb-4 leading-relaxed">
                 Helping families find their perfect canine companions through intelligent breed matching.
               </p>
             </div>
@@ -247,24 +250,24 @@ export default function Home() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2">
-                <li><button onClick={() => setShowQuestionnaire(true)} className="text-gray-300 hover:text-white transition-colors">Take Quiz</button></li>
-                <li><Link href="/breeds" className="text-gray-300 hover:text-white transition-colors">Browse Breeds</Link></li>
-                <li><Link href="/about" className="text-gray-300 hover:text-white transition-colors">About Us</Link></li>
+                <li><button onClick={() => setShowQuestionnaire(true)} className="text-neutral-300 hover:text-white transition-colors">Take Quiz</button></li>
+                <li><Link href="/breeds" className="text-neutral-300 hover:text-white transition-colors">Browse Breeds</Link></li>
+                <li><Link href="/about" className="text-neutral-300 hover:text-white transition-colors">About Us</Link></li>
               </ul>
             </div>
             
             <div>
               <h3 className="text-lg font-semibold mb-4">Support</h3>
               <ul className="space-y-2">
-                <li><Link href="/help" className="text-gray-300 hover:text-white transition-colors">Help Center</Link></li>
-                <li><Link href="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>
-                <li><Link href="/privacy" className="text-gray-300 hover:text-white transition-colors">Privacy</Link></li>
+                <li><Link href="/help" className="text-neutral-300 hover:text-white transition-colors">Help Center</Link></li>
+                <li><Link href="/contact" className="text-neutral-300 hover:text-white transition-colors">Contact</Link></li>
+                <li><Link href="/privacy" className="text-neutral-300 hover:text-white transition-colors">Privacy</Link></li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-gray-800 pt-8 mt-8 text-center">
-            <p className="text-gray-400">
+          <div className="border-t border-neutral-800 pt-8 mt-8 text-center">
+            <p className="text-neutral-400">
               © 2025 Pawfect Match. Made with ❤️ for dog lovers everywhere.
             </p>
           </div>
