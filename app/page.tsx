@@ -230,49 +230,6 @@ export default function Home() {
           </button>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-neutral-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="col-span-2">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-green-500 rounded-xl flex items-center justify-center">
-                  <span className="text-xl">🐾</span>
-                </div>
-                <span className="text-xl font-bold">Pawfect Match</span>
-              </div>
-              <p className="text-neutral-300 mb-4 leading-relaxed">
-                Helping families find their perfect canine companions through intelligent breed matching.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li><button onClick={() => setShowQuestionnaire(true)} className="text-neutral-300 hover:text-white transition-colors">Take Quiz</button></li>
-                <li><Link href="/breeds" className="text-neutral-300 hover:text-white transition-colors">Browse Breeds</Link></li>
-                <li><Link href="/about" className="text-neutral-300 hover:text-white transition-colors">About Us</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Support</h3>
-              <ul className="space-y-2">
-                <li><Link href="/help" className="text-neutral-300 hover:text-white transition-colors">Help Center</Link></li>
-                <li><Link href="/contact" className="text-neutral-300 hover:text-white transition-colors">Contact</Link></li>
-                <li><Link href="/privacy" className="text-neutral-300 hover:text-white transition-colors">Privacy</Link></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-neutral-800 pt-8 mt-8 text-center">
-            <p className="text-neutral-400">
-              © 2025 Pawfect Match. Made with ❤️ for dog lovers everywhere.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
