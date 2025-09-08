@@ -42,11 +42,11 @@ export default function BreedsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white">
-        <Navigation showQuizButton={false} />
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+        <Navigation />
         <div className="max-w-4xl mx-auto p-6">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
             <h2 className="text-xl font-semibold">Loading breeds...</h2>
           </div>
         </div>
@@ -56,8 +56,8 @@ export default function BreedsPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white">
-        <Navigation showQuizButton={false} />
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+        <Navigation />
         <div className="max-w-4xl mx-auto p-6">
           <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
             <h2 className="text-xl font-semibold text-red-800 mb-2">Error Loading Breeds</h2>
@@ -69,15 +69,15 @@ export default function BreedsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white">
-      <Navigation showQuizButton={false} />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+      <Navigation />
       
       <div className="max-w-7xl mx-auto p-6">
         <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-2">
             🐾 Browse All Dog Breeds
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-neutral-600">
             Explore {breeds?.length || 0}+ dog breeds and find your perfect companion
           </p>
         </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 interface NavigationProps {
@@ -11,6 +11,7 @@ interface NavigationProps {
 
 export default function Navigation({ onTakeQuiz, showQuizButton = true }: NavigationProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleTakeQuiz = () => {
@@ -19,6 +20,20 @@ export default function Navigation({ onTakeQuiz, showQuizButton = true }: Naviga
     } else {
       router.push('/');
     }
+  };
+
+  const navItems = [
+    { href: '/', label: 'Home' },
+    { href: '/guides', label: 'Guides' },
+    { href: '/breeds', label: 'Browse Breeds' },
+    { href: '/about', label: 'About' }
+  ];
+
+  const isActive = (href: string) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(href);
   };
 
   return (
@@ -36,29 +51,30 @@ export default function Navigation({ onTakeQuiz, showQuizButton = true }: Naviga
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {showQuizButton && (
-              <button 
-                onClick={handleTakeQuiz}
-                className="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200 relative group"
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`font-medium transition-colors duration-200 relative group ${
+                  isActive(item.href)
+                    ? 'text-blue-600'
+                    : 'text-neutral-700 hover:text-blue-600'
+                }`}
               >
-                Take Quiz
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-full"></span>
-              </button>
-            )}
-            <Link 
-              href="/breeds" 
-              className="text-neutral-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group"
+                {item.label}
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-200 ${
+                  isActive(item.href) ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}></span>
+              </Link>
+            ))}
+            
+            <button 
+              onClick={handleTakeQuiz}
+              className="bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg"
             >
-              Browse Breeds
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-full"></span>
-            </Link>
-            <Link 
-              href="/about" 
-              className="text-neutral-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group"
-            >
-              About
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-full"></span>
-            </Link>
+              Take Quiz
+            </button>
+            
             <Link 
               href="/auth" 
               className="btn-primary inline-flex items-center px-6 py-2.5 text-sm font-semibold"
@@ -89,31 +105,31 @@ export default function Navigation({ onTakeQuiz, showQuizButton = true }: Naviga
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-neutral-200 bg-white/95 backdrop-blur-sm">
             <div className="flex flex-col space-y-4">
-              {showQuizButton && (
-                <button 
-                  onClick={() => {
-                    handleTakeQuiz();
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200 text-left px-2"
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`font-medium transition-colors duration-200 px-2 py-1 rounded ${
+                    isActive(item.href)
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-neutral-700 hover:text-blue-600 hover:bg-neutral-50'
+                  }`}
                 >
-                  Take Quiz
-                </button>
-              )}
-              <Link 
-                href="/breeds" 
-                className="text-neutral-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2"
-                onClick={() => setIsMobileMenuOpen(false)}
+                  {item.label}
+                </Link>
+              ))}
+              
+              <button 
+                onClick={() => {
+                  handleTakeQuiz();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 mx-2"
               >
-                Browse Breeds
-              </Link>
-              <Link 
-                href="/about" 
-                className="text-neutral-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                About
-              </Link>
+                Take Quiz
+              </button>
+              
               <Link 
                 href="/auth" 
                 className="btn-primary inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold mx-2"
