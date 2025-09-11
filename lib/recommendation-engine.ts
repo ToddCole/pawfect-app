@@ -4,6 +4,8 @@ export interface Breed {
   id: string;
   name: string;
   size: string;
+  // Some admin pages use 'breed_group' while public pages use 'group'. Keep both for compatibility.
+  breed_group?: string;
   energy_level: number;
   good_with_kids: number;
   training_ease: number;

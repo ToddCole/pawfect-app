@@ -67,6 +67,9 @@ export default function Footer() {
               <Link href="/terms" className="block text-neutral-300 hover:text-white transition-colors">
                 Terms of Service
               </Link>
+              <Link href="/breed-manager" className="block text-orange-400 hover:text-orange-300 transition-colors font-semibold">
+                🛠️ BREED DATABASE MANAGER
+              </Link>
             </nav>
           </div>
         </div>

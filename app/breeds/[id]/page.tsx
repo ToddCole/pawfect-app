@@ -18,7 +18,7 @@ interface Breed {
 }
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function BreedDetailPage({ params }: PageProps) {

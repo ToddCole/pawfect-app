@@ -4,11 +4,27 @@ import Link from "next/link";
 import Questionnaire, { QuestionnaireData } from "@/components/questionnaire";
 import Results from "@/components/results";
 import Navigation from "@/components/navigation";
+import AuthModal from "@/components/auth-modal";
 import { useState } from "react";
+import { useAuth } from "@/contexts/auth-context";
 
 export default function Home() {
+  const { user, isAdmin, loading, initialized, signOut } = useAuth();
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
   const [results, setResults] = useState<QuestionnaireData | null>(null);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+
+  // Show loading state until auth is initialized
+  if (!initialized) {
+    return (
+      <div className="min-h-screen gradient-bg flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   const handleQuestionnaireComplete = (data: QuestionnaireData) => {
     setResults(data);
@@ -20,26 +36,57 @@ export default function Home() {
     setShowQuestionnaire(false);
   };
 
+  const handleSignOut = async () => {
+    await signOut();
+  };
+
   if (showQuestionnaire) {
     return (
       <div className="min-h-screen gradient-bg">
-        <Navigation showQuizButton={false} />
+        <Navigation 
+          showQuizButton={false} 
+          user={user}
+          isAdmin={isAdmin}
+          onSignIn={() => setShowAuthModal(true)}
+          onSignOut={handleSignOut}
+        />
         <main className="py-12">
           <Questionnaire onComplete={handleQuestionnaireComplete} />
         </main>
+        <AuthModal 
+          isOpen={showAuthModal} 
+          onClose={() => setShowAuthModal(false)} 
+        />
       </div>
     );
   }
 
   if (results) {
     return (
-      <Results answers={results} onBack={handleBackToHome} />
+      <>
+        <Results 
+          answers={results} 
+          onBack={handleBackToHome} 
+          user={user}
+          showAuthPrompt={() => setShowAuthModal(true)}
+        />
+        <AuthModal 
+          isOpen={showAuthModal} 
+          onClose={() => setShowAuthModal(false)} 
+        />
+      </>
     );
   }
 
   return (
     <div className="min-h-screen gradient-bg">
-      <Navigation onTakeQuiz={() => setShowQuestionnaire(true)} />
+      <Navigation 
+        onTakeQuiz={() => setShowQuestionnaire(true)} 
+        user={user}
+        isAdmin={isAdmin}
+        onSignIn={() => setShowAuthModal(true)}
+        onSignOut={handleSignOut}
+      />
 
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
@@ -230,6 +277,12 @@ export default function Home() {
           </button>
         </div>
       </section>
+
+      {/* Auth Modal */}
+      <AuthModal 
+        isOpen={showAuthModal} 
+        onClose={() => setShowAuthModal(false)} 
+      />
     </div>
   );
 }

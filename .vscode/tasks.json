@@ -1,0 +1,95 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "git-commit-and-push",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"git add -A; git commit -m \"feat(admin): secure service-role update path for breeds; switch edit save to API; add admin middleware+auth context; align schema to 'group' and fix hydration/params; add SQL helpers\"; git push"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "git-commit-and-push-2",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"git add -A; git commit -m \"feat: admin-secure breed updates and fixes\"; git push"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "git-status-check",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"git status -s; git rev-parse --abbrev-ref HEAD; git log -1 --oneline"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "git-add-all",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"git add -A"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "git-commit-safe",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"git commit -m \"chore: commit admin-secure breed update flow and related fixes\""
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "git-push",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"git push"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "git-add-all-seq",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"git add -A"
+			],
+			"isBackground": false,
+			"group": "build"
+		}
+	]
+}
