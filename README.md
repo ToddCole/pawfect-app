@@ -43,9 +43,20 @@ npm install
 2. **Environment Setup**:
 Create a `.env.local` file with your Supabase credentials:
 ```bash
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+cp .env.example .env.local
 ```
+
+Then edit `.env.local` and add your Supabase credentials:
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url_here
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key_here
+```
+
+**Where to find these values:**
+- Go to your [Supabase Dashboard](https://supabase.com/dashboard)
+- Select your project
+- Navigate to Settings → API
+- Copy the "Project URL" and "Project API keys" → "anon public"
 
 3. **Run the development server**:
 ```bash
@@ -54,6 +65,9 @@ npm run dev
 
 4. **Open your browser**:
 Visit [http://localhost:3000](http://localhost:3000) to see the application.
+
+5. **Test your setup**:
+Visit [http://localhost:3000/test-supabase](http://localhost:3000/test-supabase) to verify your Supabase connection.
 
 ## Database Schema
 
@@ -82,3 +96,20 @@ The application includes a footer navigation with:
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
+
+## Troubleshooting
+
+### Authentication Issues
+
+If you're seeing "Error: Database error saving new user" or similar authentication errors:
+
+1. **Check Environment Variables**: Visit `/test-supabase` to verify your Supabase configuration
+2. **Verify Credentials**: Ensure your Supabase URL and anon key are correct
+3. **Check Supabase Project**: Make sure your Supabase project is active and accessible
+4. **Authentication Settings**: In your Supabase dashboard, check that email authentication is enabled
+
+### Common Error Messages
+
+- **"Your project's URL and API key are required"**: Missing environment variables in `.env.local`
+- **"Database error saving new user"**: Usually indicates Supabase connection issues
+- **Build fails with font errors**: Network connectivity issue (fonts will fallback in dev mode)
