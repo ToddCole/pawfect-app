@@ -24,13 +24,47 @@ export default function AuthPage() {
       });
 
       if (error) {
-        setMessage(`Error: ${error.message}`);
+        // Provide specific error handling for common Supabase authentication issues
+        console.error('Supabase authentication error:', error);
+        
+        let userFriendlyMessage = "";
+        
+        if (error.message.includes("Database error") || error.message.includes("saving new user")) {
+          userFriendlyMessage = "Database error saving new user. This usually means the Supabase database is not properly configured. Please check that:\n\n" +
+            "1. Your Supabase project is active and not paused\n" +
+            "2. Row Level Security (RLS) policies are correctly set up\n" +
+            "3. The database schema includes proper user tables\n" +
+            "4. Authentication is enabled in your Supabase dashboard\n\n" +
+            "Contact support if this issue persists.";
+        } else if (error.message.includes("Invalid API key") || error.message.includes("Project not found")) {
+          userFriendlyMessage = "Configuration error: Invalid Supabase credentials. Please check your environment variables and ensure the Supabase project is properly set up.";
+        } else if (error.message.includes("Failed to fetch") || error.message.includes("network")) {
+          userFriendlyMessage = "Network error: Unable to connect to authentication service. Please check your internet connection and try again.";
+        } else if (error.message.includes("Email not confirmed")) {
+          userFriendlyMessage = "Please check your email and click the confirmation link before trying to sign in.";
+        } else if (error.message.includes("Invalid email")) {
+          userFriendlyMessage = "Please enter a valid email address.";
+        } else {
+          userFriendlyMessage = `Authentication error: ${error.message}`;
+        }
+        
+        setMessage(`Error: ${userFriendlyMessage}`);
       } else {
         setMessage("Check your email for the magic link!");
       }
     } catch (err) {
       console.error('Authentication error:', err);
-      setMessage("An unexpected error occurred.");
+      
+      // Handle network and connection errors
+      if (err instanceof TypeError && err.message.includes("Failed to fetch")) {
+        setMessage("Error: Unable to connect to authentication service. This usually means:\n\n" +
+          "1. Your internet connection is down\n" +
+          "2. The Supabase service is unreachable\n" +
+          "3. Your Supabase URL is incorrect\n\n" +
+          "Please check your connection and Supabase configuration.");
+      } else {
+        setMessage("Error: An unexpected error occurred. Please try again or contact support if the issue persists.");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -70,18 +104,24 @@ export default function AuthPage() {
       </form>
       
       {message && (
-        <div className={`mt-4 p-3 rounded-md ${
+        <div className={`mt-4 p-4 rounded-md ${
           message.includes("Error") 
             ? "bg-red-100 text-red-700 border border-red-300" 
             : "bg-green-100 text-green-700 border border-green-300"
         }`}>
-          {message}
+          <div className="whitespace-pre-line text-sm leading-relaxed">
+            {message}
+          </div>
         </div>
       )}
       
       <p className="mt-6 text-sm text-gray-600">
-        We'll send you a secure link to sign in without a password.
+        We&apos;ll send you a secure link to sign in without a password.
       </p>
+      
+      <div className="mt-4 text-sm text-gray-500">
+        <p>Having trouble signing in? <a href="/api/health" target="_blank" className="text-blue-600 hover:underline">Check system status</a></p>
+      </div>
     </main>
   );
 }
