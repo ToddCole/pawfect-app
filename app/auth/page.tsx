@@ -29,6 +29,7 @@ export default function AuthPage() {
         setMessage("Check your email for the magic link!");
       }
     } catch (err) {
+      console.error('Authentication error:', err);
       setMessage("An unexpected error occurred.");
     } finally {
       setIsLoading(false);
